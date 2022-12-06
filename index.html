@@ -1,13 +1,136 @@
+<!-- 
+
+-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Here is some text:</p>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jacob's Resume</title>
+        <link href="Resume.css"rel="stylesheet">
+        <!-- Insert icon for tab-->
+        <h1 id="About">Jacob Fuller</h1>
+
+        <p><span class="Contact">Phone: 918-240-4423<br>
+        Address: 525 W Wallace St, Shawnee OK</p></span>
+        <!-- 
+            Contact information
+            Navagation bar with menus 
+        -->
+    </head>
+
+    <body>
+        <p id="nav">
+            <a href="#About">Home</a>
+            <a href="#Education">Education</a>
+            <a href="#Hobbies">Hobbies</a>
+            <a href="#Activites">Activities</a>
+            <a href="#contact">Contact</a>
+            <a href="./Final Project Game/wordle.html">Play Game</a>
+        </p>
+        <h2>About Me:</h2>
+        <section id="Mission">  
+        <p id="Mission">
+            My personal mission statement:<br>
+            “Fate whispers to the warrior, ‘You cannot withstand the storm.’ The warrior whispers back, ‘I am the storm.”-Unknown<br><br>
+            <!-- Maybe photoshop a pic of me with the quote-->
+        </p><br>
+        </section>
+        <img align="middle"src="./Images/QuoteImage.png"alt="Quote Image"width=500 height=500>
+        <section id="Education">
+        <h2>Education:</h2>
+        <p id="Education">
+            I went to Union High School, where I graduated in 2019.<br>
+            I then committed to Oklahoma Baptist University. <br>
+            I am currently a Computer Science Student, expecting to graduate in December, 2023<br>
+            I am taking web development, as well as software development, and want to work in on of those areas.<br>
+            I have recieved multiple business scholarships for being an outstanding business student.<br>
+        </p><br>
+    </section>
+        <!-- Maybe use this as table -->
+        <section id="Work-Exp">
+        <h2>Work Experience:</h2>
+        <p id="Work-Exp">
+            <table id="workexp">
+            <tr>
+            <th>Union HS<br>(2017-2019)</th>
+                <td>I worked at Union while I was a student in high school performing services 
+                    to help the students and teachers during the school day.</td>
+            <th>Home Depot<br>(2020)</th> 
+                    <td>I worked at home depot during quarentine, following us being sent home 
+                        from school. <br>I was a freight associate, where I would unload freight off of 
+                        trucks, and then stock those products to the shelves at night.</td>
+                </tr>
+                        <tr><th>Union IT<br>(2021-2022)</th>
+                <td>Because of my previous experience working for union in high school, I was invited to work there over the summer.<br>
+                    My main duties were assisting the laptop teams, where we did inventory, collection, cleaning and repairs.</td>
+                <th>Chisholm<br>(2020)</th>
+                    <td>Also during covid, I was able to go and help Chisholm's IT department with their move to a new office.<br>
+                        I spent a couple of weeks working with their senior IT director in order to help move, and setup the new equipment.</td>
+                        </tr>
+                    </table>
+        </p>
+    </section>
+    <section id="Hobbies">
+        <h2>My Hobbies</h2>
+        <p id="Hobbies">
+            I am a big gamer, I play games on PC and Xbox.<br>
+            I play a variety of different games(usually with my friends):<br>
+            <!-- Format this aside to make it in a box on the side  -->
+            <aside>
+                <ul id="games">
+                    <!-- Icons for games in the table-->
+                    <h2 id="gamesH">Games I Play:</h2>
+                    <li>Apex Legends</li>
+                    <!--<img class="logo"src="./Images/ApexLogo.jpg"width=50 height=50>-->
+                    <li>NBA 2k<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                    <li>Madden NFL Football<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                    <li>Overwatch<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                    <li>Call of Duty<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                    <li>Destiny 2<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                    <li>Valorant<img></li>
+                    <!--<img class="logo"src="./Images/Logo.jpg"width=50 height=50>-->
+                </ul>
+            </aside>
+            <br>
+            I am also interested in video editing, and like to work on my gaming clips to practice.<br>
+            <!-- Maybe insert a clip in here -->
+            I have worked with different apps such as photoshop in order to create graphics, and thumbnails for youtubers.<br>
+            <img src="./Images/Black and Red Gaming Logo.png" width="250"height="250">
+            <!-- Maybe insert image here -->
+            I feel like all these interests somewhat blend together, and I think that's a pretty cool connection.<br>
+            In addition, I like to collect sports cards/memoribilia, mostly Dallas Cowboys and Oklahoma players.<br>
+            <!-- Maybe insert an image in here-->
+
+        </p><br>
+    </section>
+    <section id="Activities">
+        <h2>My Activities:</h2>
+        <p id="Activites">
+            I am a football player, and I have been for a majority of my life. <br>
+            I play Offensive Line, I was a Tackle in High School, and then a Guard in college.<br>
+            It is very time consuming, but I enjoy the work, and then seeing the work pay off on the field.<br>
+            If you're interested, you can see some highlights from this past season here:<br><br>
+            <!-- Add the default image shown before video click-->
+            <video src="../Resume/Videos/OBU Season 2021-2022 Highlight Reel.mp4"controls></video><br>
+            <audio src="../Resume/Audio/ytmp3free.cc_oklahoma-baptist-universitys-fight-song-youtubemp3free.org.mp3"controls></audio><br>
+            <a href="#About">Return to top of page</a>
+        </p>
+    </section>
+        
+    </body>
+    <footer>
+
+        <p id="contact">You can contact me by email at: Jake.Fuller64@gmail.com
+        
+            <img src="./Images/Email.png"width="25"height="25">
+        </p>
+        
+    </footer>
 </html>

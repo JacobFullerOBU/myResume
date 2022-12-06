@@ -1,0 +1,67 @@
+h1{
+    text-align: center;
+    background-color: lightgreen;
+}
+h2{
+    text-align: center;
+}
+
+.Contact{
+    font-size: small;
+    text-align: right;
+}
+a{
+    color: green;
+}
+#nav{
+    display: inline;
+    font-size: x-large;
+    color: green;
+    word-spacing: 100px;
+    background-color: lightgray;
+    
+}
+
+#Education{
+    background-color: lightgreen;
+}
+
+#Work-exp{
+    background-color: salmon;
+    background-origin: content-box;
+}
+aside{
+    text-align: right;
+    display: block;
+}
+section{
+    display:table;
+}
+#Work-exp{
+    display: table-cell;
+}
+#games{
+    
+    display: list-item;
+}
+#gamesH{
+    display: table-caption;
+
+}
+#workexp{
+    display: table;
+    
+}
+th{
+    font-size: large;
+    
+}
+#logo{
+    float: left;
+}
+#Hobbies{
+    background-color: lightgreen;
+}
+#Mission{
+    background-color: lightgreen;
+}
