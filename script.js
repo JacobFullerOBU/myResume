@@ -1,4 +1,4 @@
-import { WORDS } from "./dictionary.js";
+import { WORDS } from "./words.js";
 
 const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
@@ -7,10 +7,6 @@ let nextLetter = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
 
 console.log(rightGuessString)
-
-function keyClick(){
-    console.log("Log this" + key)
-}
 
 function initBoard() {
     let board = document.getElementById("game-board");
