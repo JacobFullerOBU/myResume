@@ -8,16 +8,26 @@ h1{
     text-decoration: underline;
     text-size-adjust: large;
 }
+
 #inst-text{
     margin: 250px;
     margin-top: 100px;
     width: 600px;
     height: 400px;
-    border: thick;
-    border-color: black;
     line-height: 35px;
+    font-weight: 600;
+
 }
 footer{
     text-align: center;
     background-color: lightgreen;   
+}
+#grey{
+    background-color: grey;
+}
+#yellow{
+    background-color: yellow;
+}
+#green{
+    background-color: green;
 }
