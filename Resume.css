@@ -15,20 +15,25 @@ a{
 }
 #nav{
     display: inline;
+    
     font-size: x-large;
     color: green;
-    word-spacing: 100px;
+    word-spacing: 200px;
     background-color: lightgray;
     
 }
 
 #Education{
     background-color: lightgreen;
+    display: grid;
+    text-align: center;
 }
 
 #Work-exp{
     background-color: salmon;
     background-origin: content-box;
+    display: grid;
+    text-align: center;
 }
 aside{
     text-align: right;
@@ -46,10 +51,13 @@ section{
 }
 #gamesH{
     display: table-caption;
+    text-align: center;
 
 }
 #workexp{
-    display: table;
+    
+    display: grid;
+    text-align: center;
     
 }
 th{
@@ -61,7 +69,21 @@ th{
 }
 #Hobbies{
     background-color: lightgreen;
+    display: grid;
+    text-align: center;
 }
 #Mission{
+    background-color: lightgreen;
+    display: grid;
+    text-align: center;
+}
+#Activities{
+    background-color: white;
+    display: grid;
+    text-align: center;
+}
+footer{
+    display: grid;
+    text-align: center;
     background-color: lightgreen;
 }
