@@ -117,6 +117,8 @@ footer {
     background-color: #333;
     color: white;
     position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Contact Info */
