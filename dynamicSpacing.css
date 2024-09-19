@@ -50,6 +50,9 @@ p {
 #nav a:hover {
     color: #ddd;
 }
+.nav-bar li:last-child {
+    border-right: none;
+  }
 
 /* Main content sections */
 section {
