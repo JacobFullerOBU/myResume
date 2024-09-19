@@ -130,3 +130,39 @@ footer{
     background-color: #2980b9;
     border-radius: 4px;
 }
+/* Default styles for larger screens */
+body {
+    font-size: 18px;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Tablet view (up to 768px wide) */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+}
+
+/* Mobile view (up to 480px wide) */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar ul li {
+        margin-bottom: 10px;
+    }
+}
