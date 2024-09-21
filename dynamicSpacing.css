@@ -31,31 +31,6 @@ p {
     margin-right: auto;
 }
 
-/* Navbar */
-#nav {
-    display: flex;
-    justify-content: center;
-    background-color: #beb508;
-    padding: 1rem;
-}
-
-#nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-#nav a:hover {
-    color: #ddd;
-}
-/*
-.nav-bar li:last-child {
-    border-right: none;
-  }
-/*
-/* Main content sections */
 section {
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -228,26 +203,6 @@ p {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Navbar */
-#nav {
-    display: flex;
-    justify-content: center;
-    background-color: #006400; /* Dark green for navbar background */
-    padding: 1rem;
-}
-
-#nav a {
-    color: #ffd700; /* Gold color for navbar links */
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    transition: color 0.3s;
-}
-
-#nav a:hover {
-    color: #fffacd; /* Lighter gold on hover */
 }
 
 /* Main content sections */

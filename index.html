@@ -9,11 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jacob's Resume</title>
         <link href="dynamicSpacing.css"rel="stylesheet">
-        <!--
-        <link href="Resume.css"rel="stylesheet">
-        -->
-        
-        <!-- Insert icon for tab-->
         <h1 id="About">Jacob Fuller</h1>
 
         <p><span class="Contact">Phone: 918-357-6169<br>
@@ -25,16 +20,72 @@
     </head>
 
     <body>
-        <p id="nav">
-            <a href="#About">Home</a>
-            <a href="./Education/education.html">Education</a>
-            <a href="./Hobbies/hobbies.html">Hobbies</a>
-            <a href="../myResume/Photo Gallery/photoGallery.html">Photo Gallery</a>
+        <div id="tabs">
+            <ul>
+              <li><a href="#About"><span>Home</span></a></li>
+              <li><a href="./Education/education.html"><span>Education</span></a></li>
+              <li><a href="./Hobbies/hobbies.html"><span>Hobbies</span></a></li>
+              <li><a href="../myResume/Photo Gallery/photoGallery.html"><span>Photo Gallery</span></a></li>
+              <li><a href="./Contact/contactMe.html"><span>Contact</span></a></li>
+              <li><a href="./Wordle Game/Menu/Menu.html"><span>Play Word Game</span></a></li>
             <!-- Create Media Page instead of hobbies that shows art I've made -->
-            <a href="#Activites">Activities</a>
-            <a href="./Contact/contactMe.html">Contact</a>
-            <a href="./Wordle Game/Menu/Menu.html">Play Game</a>
+            </ul>
+          </div>
+        <p id="nav">      
         </p>
+        <style>
+            #tabs {
+                float:left;
+                width:100%;
+                background:white;
+                font-size:93%;
+                line-height:normal;
+                }
+
+            #tabs ul {
+                margin:0;
+                padding:10px 10px 0 50px;
+                list-style:none;
+                }
+
+            #tabs li {
+                display:inline;
+                margin:0;
+                padding:0;
+                }
+
+            #tabs a {
+                float:left;
+                background:url("tableft.gif") no-repeat left top;
+                margin:0;
+                padding:0 0 0 4px;
+                text-decoration:none;
+                }
+
+            #tabs a span {
+                float:left;
+                display:block;
+                background:url("tabright.gif") no-repeat right top;
+                padding:5px 15px 4px 6px;
+                color:#FFF;
+                }
+
+            /* Commented Backslash Hack hides rule from IE5-Mac \*/
+            #tabs a span {float:none;}
+
+            /* End IE5-Mac hack */
+            #tabs a:hover span {
+                color:#FFF;
+                }
+
+            #tabs a:hover {
+                background-position:0% -42px;
+                }
+
+            #tabs a:hover span {
+                background-position:100% -42px;
+                } 
+        </style>
         <h2>About Me:</h2>
         <section id="Mission">  
         <p id="Mission">
