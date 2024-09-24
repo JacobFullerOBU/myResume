@@ -3,21 +3,6 @@ html, body {
     padding: 0;
     overflow-x: hidden;
 }
-
-/*
-html{
-    
-    margin-left: 100px;
-    max-width: 80%;
-    html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-    
-}
-*/
 h1{
     text-align: center;
     background-color: lightgreen;
@@ -33,13 +18,7 @@ h2{
 a{
     color: green;
 }
-#nav{
-    display: inline;
-    font-size: large;
-    color: green;
-    word-spacing:100px;
-    background-color: lightgray;
-}
+
 #olpic{
     display: inline;
     margin-left: 150px;
@@ -112,38 +91,6 @@ footer{
     display: grid;
     text-align: center;
     background-color: lightgreen;
-}
-.navbar {
-    background-color: #3498db;
-    padding: 10px;
-}
-
-.navbar ul {
-    display: flex;  /* Flexbox for a horizontal layout */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar ul li {
-    margin-right: 20px;
-}
-
-.navbar ul li:last-child {
-    margin-right: 0; /* Remove margin for the last item */
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    padding: 8px 16px;
-    transition: background-color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: #2980b9;
-    border-radius: 4px;
 }
 /* Default styles for larger screens */
 body {

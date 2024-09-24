@@ -1,53 +1,100 @@
-<!-- 
 
--->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jacob's Resume</title>
-        <link href="dynamicSpacing.css"rel="stylesheet">
-        <!--
-        <link href="Resume.css"rel="stylesheet">
-        -->
-        
-        <!-- Insert icon for tab-->
-        <h1 id="About">Jacob Fuller</h1>
 
-        <p><span class="Contact">Phone: 918-xxx-xxxx<br>
-        Address: 500 W University St, Shawnee OK</p></span>
-        <!-- 
-            Contact information
-            Navagation bar with menus 
-        -->
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob's Resume</title>
+    <link href="dynamicSpacing.css" rel="stylesheet">
+    <h1 id="About">Jacob Fuller</h1>
 
-    <body>
-        <p id="nav">
-            <a href="#About">Home</a>
-            <a href="./Education/education.html">Education</a>
-            <a href="./Hobbies/hobbies.html">Hobbies</a>
-            <a href="../myResume/Photo Gallery/photoGallery.html">Photo Gallery</a>
+    <p><span class="Contact">Phone: 918-357-6169<br>
+            Address: 500 W University St, Shawnee OK</p></span>
+</head>
+
+<body>
+    <div id="tabs">
+        <ul>
+            <li><a href="#About"><span>Home</span></a></li>
+            <li><a href="./Education/education.html"><span>Education</span></a></li>
+            <li><a href="./Hobbies/hobbies.html"><span>Hobbies</span></a></li>
+            <li><a href="../myResume/Photo Gallery/photoGallery.html"><span>Photo Gallery</span></a></li>
+            <li><a href="./Contact/contactMe.html"><span>Contact</span></a></li>
+            <li><a href="./Wordle Game/Menu/Menu.html"><span>Play Word Game</span></a></li>
             <!-- Create Media Page instead of hobbies that shows art I've made -->
-            <a href="#Activites">Activities</a>
-            <a href="./Contact/contactMe.html">Contact</a>
-            <a href="./Wordle Game/Menu/Menu.html">Play Game</a>
-        </p>
-        <h2>About Me:</h2>
-        <section id="Mission">  
+        </ul>
+    </div>
+    <style>
+        #tabs {
+            float: left;
+            width: 100%;
+            background: white;
+            font-size: 93%;
+            line-height: normal;
+        }
+
+        #tabs ul {
+            margin: 0;
+            padding: 10px 10px 0 50px;
+            list-style: none;
+        }
+
+        #tabs li {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+
+        #tabs a {
+            float: left;
+            background: url("tableft.gif") no-repeat left top;
+            margin: 0;
+            padding: 0 0 0 4px;
+            text-decoration: none;
+            
+        }
+
+        #tabs a span {
+            float: left;
+            display: block;
+            background: url("tabright.gif") no-repeat right top;
+            padding: 5px 15px 4px 6px;
+            color: #FFF;
+        }
+
+        /* Commented Backslash Hack hides rule from IE5-Mac \*/
+        #tabs a span {
+            float: none;
+        }
+
+        /* End IE5-Mac hack */
+        #tabs a:hover span {
+            color: #FFF;
+        }
+
+        #tabs a:hover {
+            background-position: 0% -42px;
+        }
+
+        #tabs a:hover span {
+            background-position: 100% -42px;
+        }
+    </style>
+    <h2>About Me:</h2>
+    <section id="Mission">
         <p id="Mission">
             My personal mission statement:<br>
-            “Fate whispers to the warrior, ‘You cannot withstand the storm.’ 
+            “Fate whispers to the warrior, ‘You cannot withstand the storm.’
             The warrior whispers back, ‘I am the storm.”-Unknown<br><br>
         </p><br>
-        
-        </section>
 
-        <img id="olpic" src="./Resume/images/QuoteImage.png">
+    </section>
 
-        <section id="Education">
+    <img id="olpic" src="./Resume/images/QuoteImage.png">
+
+    <section id="Education">
         <h2>Education:</h2>
         <p id="Education">
             I went to Union High School, where I graduated in 2019.<br>
@@ -58,32 +105,37 @@
             This semester I lead as a President in Dr Green's Marketing Simulation.<br>
         </p><br>
     </section>
-        
-        <section id="Work-Exp">
+
+    <section id="Work-Exp">
         <h2>Work Experience:</h2>
         <p id="Work-Exp">
             <table id="workexp">
-            <tr>
-            <th>Union HS<br>(2017-2019)</th>
-                <td>I worked at Union while I was a student in high school performing services 
-                    to help the students and teachers during the school day.</td>
-            <th>Home Depot<br>(2020)</th> 
-                    <td>I worked at home depot during quarentine, following us being sent home 
-                        from school. <br>I was a freight associate, where I would unload freight off of 
+                <tr>
+                    <th>Union HS<br>(2017-2019)</th>
+                    <td>I worked at Union while I was a student in high school performing services
+                        to help the students and teachers during the school day.</td>
+                    <th>Home Depot<br>(2020)</th>
+                    <td>I worked at home depot during quarentine, following us being sent home
+                        from school. <br>I was a freight associate, where I would unload freight off of
                         trucks, and then stock those products to the shelves at night.</td>
                 </tr>
-                        <tr><th>Union IT<br>(2021-2022)</th>
-                <td>Because of my previous experience working for union in high school, I was invited to work there over the summer.<br>
-                    My main duties were assisting the laptop teams, where we did inventory, collection, cleaning and repairs.</td>
-                <th>Chisholm<br>(2020)</th>
-                    <td>Also during covid, I was able to go and help Chisholm's IT department with their move to a new office.<br>
-                        I spent a couple of weeks working with their senior IT director in order to help move, and setup the new equipment.</td>
-                        </tr>
+                <tr>
+                    <th>Union IT<br>(2021-2022)</th>
+                    <td>Because of my previous experience working for union in high school, I was invited to work there
+                        over the summer.<br>
+                        My main duties were assisting the laptop teams, where we did inventory, collection, cleaning and
+                        repairs.</td>
+                    <th>Chisholm<br>(2020)</th>
+                    <td>Also during covid, I was able to go and help Chisholm's IT department with their move to a new
+                        office.<br>
+                        I spent a couple of weeks working with their senior IT director in order to help move, and setup
+                        the new equipment.</td>
+                </tr>
                 <th>Union Public Schools<br>(2023-Current)</th>
-                    <td>I began at Union Public Schools in December of 2023 as a Computer Repair Technician. At Union, I 
-                        am in charge of all IT issues at 2 elementary schools.
-                    </td>        
-                    </table>
+                <td>I began at Union Public Schools in December of 2023 as a Computer Repair Technician. At Union, I
+                    am in charge of all IT issues at 2 elementary schools.
+                </td>
+            </table>
         </p>
     </section>
     <section id="Hobbies">
@@ -91,22 +143,24 @@
         <p id="Hobbies">
             I am a big gamer, I play games on PC and Xbox.<br>
             I play a variety of different games(usually with my friends):<br>
-            
-                <ul id="games">
-                    <!-- Icons for games in the table-->
-                    <h2 id="gamesH">Games I Play:</h2>
-                    <li>Apex Legends<img src="./Resume/images/Apex-Legends-Logo.png"></li>
-                    <li>NBA2K<img src="./Resume/images/2kLogo.png"></li>
-                    <li>Madden NFL Football<img src="./Resume/images/madden25.jpeg"></li>
-                    <li>Overwatch<img src="./Resume/images/overwatchlogo.png"></li>
-                    <li>Call of Duty<img src="./Resume/images/codLOgo.png"></li>
-                    <li>Destiny 2<img src="./Resume/images/destiny2logo.png"></li>
-                </ul>
+
+            <ul id="games">
+                <!-- Icons for games in the table-->
+                <h2 id="gamesH">Games I Play:</h2>
+                <li>Apex Legends<img src="./Resume/images/Apex-Legends-Logo.png"></li>
+                <li>NBA2K<img src="./Resume/images/2kLogo.png"></li>
+                <li>Madden NFL Football<img src="./Resume/images/madden25.jpeg"></li>
+                <li>Overwatch<img src="./Resume/images/overwatchlogo.png"></li>
+                <li>Call of Duty<img src="./Resume/images/codLOgo.png"></li>
+                <li>Destiny 2<img src="./Resume/images/destiny2logo.png"></li>
+            </ul>
             <br>
             I am also interested in video editing, and like to work on my gaming clips to practice.<br>
-            I have worked with different apps such as photoshop in order to create graphics, and thumbnails for some youtubers.<br>
+            I have worked with different apps such as photoshop in order to create graphics, and thumbnails for some
+            youtubers.<br>
             I feel like all these interests somewhat blend together, and I think that's a pretty cool connection.<br>
-            In addition, I like to buy and sell sports cards/memoribilia, mostly Dallas Cowboys and Oklahoma players.<br>
+            In addition, I like to buy and sell sports cards/memoribilia, mostly Dallas Cowboys and Oklahoma
+            players.<br>
 
         </p><br>
     </section>
@@ -118,19 +172,21 @@
             It is very time consuming, but I enjoy the work, and then seeing the work pay off on the field.<br>
             If you're interested, you can see some highlights from this past season here:<br><br>
             <!-- Add the default image shown before video click-->
-            <video src="./Resume/images/OBU Season 2021-2022 Highlight Reel.mp4"controls></video><br>
-            <audio src="./Resume/images/ytmp3free.cc_oklahoma-baptist-universitys-fight-song-youtubemp3free.org.mp3"controls></audio><br>
+            <video src="./Resume/images/OBU Season 2021-2022 Highlight Reel.mp4" controls></video><br>
+            <audio src="./Resume/images/ytmp3free.cc_oklahoma-baptist-universitys-fight-song-youtubemp3free.org.mp3"
+                controls></audio><br>
             <a href="#About">Return to top of page</a>
         </p>
     </section>
-        
-    </body>
-    <footer>
 
-        <p id="contact">You can contact me by email at: Jake.Fuller64@gmail.com
-        
-            <img src="./Resume/images/Email.png"width="25"height="25">
-        </p>
-        <link href="dynamicSpacing.css"rel="stylesheet">
-    </footer>
+</body>
+<footer>
+
+    <p id="contact">You can contact me by email at: Jake.Fuller64@gmail.com
+
+        <img src="./Resume/images/Email.png" width="25" height="25">
+    </p>
+    <link href="dynamicSpacing.css" rel="stylesheet">
+</footer>
+
 </html>
