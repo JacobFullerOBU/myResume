@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number List to CSV</title>
+    <style>
+        #numberList li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Enter a number and press "Add"</h1>
@@ -13,8 +18,15 @@
         <button type="submit">Add</button>
     </form>
 
+    <h3>Search:</h3>
+    <input type="text" id="searchInput" placeholder="Search number...">
+
+    <h3>Numbers List:</h3>
     <ul id="numberList"></ul>
 
+    <button id="sortAsc">Sort Ascending</button>
+    <button id="sortDesc">Sort Descending</button>
+    
     <button id="generateCSV" style="display: none;">Generate CSV and Email</button>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script> <!-- For sending emails -->
@@ -40,26 +52,42 @@
         });
 
         // Update number list on the page
-        function updateNumberList() {
+        function updateNumberList(filteredArray = numberArray) {
             const list = document.getElementById('numberList');
             list.innerHTML = '';
-            numberArray.forEach((num, index) => {
+            filteredArray.forEach((num, index) => {
                 const listItem = document.createElement('li');
                 listItem.textContent = num;
 
-                // Create a delete button for each number
+                // Create Edit button
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.style.marginLeft = '10px';
+                editButton.addEventListener('click', function() {
+                    editNumber(index);
+                });
+
+                // Create Delete button
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Delete';
                 deleteButton.style.marginLeft = '10px';
-
-                // Add delete functionality to the button
                 deleteButton.addEventListener('click', function() {
                     deleteNumber(index);
                 });
 
+                listItem.appendChild(editButton);
                 listItem.appendChild(deleteButton);
                 list.appendChild(listItem);
             });
+        }
+
+        // Edit a number in the list
+        function editNumber(index) {
+            const newValue = prompt('Enter the new number:', numberArray[index]);
+            if (newValue !== null && newValue !== '') {
+                numberArray[index] = Number(newValue);
+                updateNumberList();
+            }
         }
 
         // Delete a number from the list
@@ -72,6 +100,25 @@
                 document.getElementById('generateCSV').style.display = 'none';
             }
         }
+
+        // Sort Ascending
+        document.getElementById('sortAsc').addEventListener('click', function() {
+            numberArray.sort((a, b) => a - b);
+            updateNumberList();
+        });
+
+        // Sort Descending
+        document.getElementById('sortDesc').addEventListener('click', function() {
+            numberArray.sort((a, b) => b - a);
+            updateNumberList();
+        });
+
+        // Search Functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filteredArray = numberArray.filter(num => num.toString().includes(query));
+            updateNumberList(filteredArray);
+        });
 
         // Handle CSV generation and emailing
         document.getElementById('generateCSV').addEventListener('click', function() {
@@ -94,7 +141,7 @@
         function sendEmailWithAttachment(csvDataUrl) {
             Email.send({
                 SecureToken: "YOUR_SMTPJS_TOKEN", // Replace with your SMTPJS token
-                To: "Fuller.Jacob@unionps.org",  // Replace with your email
+                To: "your-email@example.com",  // Replace with your email
                 From: "sender-email@example.com", // Replace with a valid sender email
                 Subject: "Number List CSV",
                 Body: "Here is your CSV file with the numbers you entered.",
