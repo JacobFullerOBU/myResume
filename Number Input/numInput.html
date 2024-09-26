@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number List to CSV</title>
+</head>
+<body>
+    <h1>Enter a number and press "Add"</h1>
+
+    <form id="numberForm">
+        <input type="number" id="numberInput" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <ul id="numberList"></ul>
+
+    <button id="generateCSV" style="display: none;">Generate CSV and Email</button>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script> <!-- For sending emails -->
+    <script>
+        let numberArray = [];
+
+        // Handle form submission
+        document.getElementById('numberForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const numberInput = document.getElementById('numberInput').value;
+
+            // Add number to list
+            numberArray.push(Number(numberInput));
+            updateNumberList();
+
+            // Clear input
+            document.getElementById('numberInput').value = '';
+
+            // Show CSV button once there is at least one number
+            if (numberArray.length > 0) {
+                document.getElementById('generateCSV').style.display = 'block';
+            }
+        });
+
+        // Update number list on the page
+        function updateNumberList() {
+            const list = document.getElementById('numberList');
+            list.innerHTML = '';
+            numberArray.forEach((num, index) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = num;
+                list.appendChild(listItem);
+            });
+        }
+
+        // Handle CSV generation and emailing
+        document.getElementById('generateCSV').addEventListener('click', function() {
+            // Convert array to CSV
+            let csvContent = "data:text/csv;charset=utf-8," + numberArray.join(",\n");
+            let encodedUri = encodeURI(csvContent);
+            let link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "number_list.csv");
+            document.body.appendChild(link); // Required for Firefox
+
+            // Automatically download the CSV file
+            link.click();
+
+            // Now send the email with the CSV attached (using SMTP.js or EmailJS)
+            sendEmailWithAttachment(encodedUri);
+        });
+
+        // Function to send the email (using SMTP.js for example)
+        function sendEmailWithAttachment(csvDataUrl) {
+            Email.send({
+                SecureToken: "YOUR_SMTPJS_TOKEN", // Replace with your SMTPJS token
+                To: "your-email@example.com",  // Replace with your email
+                From: "sender-email@example.com", // Replace with a valid sender email
+                Subject: "Number List CSV",
+                Body: "Here is your CSV file with the numbers you entered.",
+                Attachments: [
+                    {
+                        name: "number_list.csv",
+                        data: csvDataUrl
+                    }
+                ]
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
+</body>
+</html>
