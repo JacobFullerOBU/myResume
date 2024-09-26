@@ -3,40 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number List to CSV</title>
+    <title>Number and Model List to CSV</title>
     <style>
         #numberList li {
             margin-bottom: 10px;
         }
-        /* Styling for the top-right image */
         .top-right-image {
-            position: fixed; /* Stays in place even when scrolling */
+            position: fixed;
             top: 10px;
             right: 10px;
-            width: 400px; /* Adjust width as needed */
+            width: 100px;
             height: auto;
         }
     </style>
 </head>
 <body>
     <!-- Image positioned in the top-right corner -->
-    <img src="../Number Input/unionlogo.png" alt="Top Right Image" class="top-right-image">
+    <img src="your-image-url.jpg" alt="Top Right Image" class="top-right-image">
 
-    <h1>Device Check In Program</h1>
+    <h1>Enter a number and select a model</h1>
 
     <form id="numberForm">
-        <input type="number" id="numberInput" required>
+        <input type="number" id="numberInput" required placeholder="Enter a number">
+        <select id="modelSelect" required>
+            <option value="" disabled selected>Select a model</option>
+            <option value="Dell Latitude 3180">Dell Latitude 3180</option>
+            <option value="Dell Latitude 3190">Dell Latitude 3190</option>
+            <option value="Dell Latitude 3310">Dell Latitude 3310</option>
+            <option value="Lenovo Gen 1">Lenovo Gen 1</option>
+            <option value="Lenovo Gen 2">Lenovo Gen 2</option>
+            <option value="Lenovo Gen 2V14">Lenovo Gen 2V14</option>
+        </select>
         <button type="submit">Add</button>
     </form>
 
     <h3>Search:</h3>
-    <input type="text" id="searchInput" placeholder="Search number...">
+    <input type="text" id="searchInput" placeholder="Search number or model...">
 
-    <h3>Numbers List:</h3>
+    <h3>Numbers and Models List:</h3>
     <ul id="numberList"></ul>
 
-    <button id="sortAsc">Sort Ascending</button>
-    <button id="sortDesc">Sort Descending</button>
+    <button id="sortAsc">Sort Ascending (Numbers)</button>
+    <button id="sortDesc">Sort Descending (Numbers)</button>
     
     <button id="generateCSV" style="display: none;">Generate CSV and Email</button>
 
@@ -48,15 +56,23 @@
         document.getElementById('numberForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const numberInput = document.getElementById('numberInput').value;
+            const modelSelect = document.getElementById('modelSelect').value;
 
-            // Add number to list
-            numberArray.push(Number(numberInput));
+            // Validate input
+            if (!numberInput || !modelSelect) {
+                alert('Please enter a number and select a model.');
+                return;
+            }
+
+            // Add number and model to list
+            numberArray.push({ number: Number(numberInput), model: modelSelect });
             updateNumberList();
 
-            // Clear input
+            // Clear input fields
             document.getElementById('numberInput').value = '';
+            document.getElementById('modelSelect').value = '';
 
-            // Show CSV button once there is at least one number
+            // Show CSV button once there is at least one entry
             if (numberArray.length > 0) {
                 document.getElementById('generateCSV').style.display = 'block';
             }
@@ -66,16 +82,16 @@
         function updateNumberList(filteredArray = numberArray) {
             const list = document.getElementById('numberList');
             list.innerHTML = '';
-            filteredArray.forEach((num, index) => {
+            filteredArray.forEach((item, index) => {
                 const listItem = document.createElement('li');
-                listItem.textContent = num;
+                listItem.textContent = `${item.number} - ${item.model}`;
 
                 // Create Edit button
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Edit';
                 editButton.style.marginLeft = '10px';
                 editButton.addEventListener('click', function() {
-                    editNumber(index);
+                    editEntry(index);
                 });
 
                 // Create Delete button
@@ -83,7 +99,7 @@
                 deleteButton.textContent = 'Delete';
                 deleteButton.style.marginLeft = '10px';
                 deleteButton.addEventListener('click', function() {
-                    deleteNumber(index);
+                    deleteEntry(index);
                 });
 
                 listItem.appendChild(editButton);
@@ -92,18 +108,19 @@
             });
         }
 
-        // Edit a number in the list
-        function editNumber(index) {
-            const newValue = prompt('Enter the new number:', numberArray[index]);
-            if (newValue !== null && newValue !== '') {
-                numberArray[index] = Number(newValue);
+        // Edit an entry in the list
+        function editEntry(index) {
+            const newNumber = prompt('Enter the new number:', numberArray[index].number);
+            const newModel = prompt('Enter the new model:', numberArray[index].model);
+            if (newNumber !== null && newModel !== null && newNumber !== '' && newModel !== '') {
+                numberArray[index] = { number: Number(newNumber), model: newModel };
                 updateNumberList();
             }
         }
 
-        // Delete a number from the list
-        function deleteNumber(index) {
-            numberArray.splice(index, 1); // Remove the number at the specified index
+        // Delete an entry from the list
+        function deleteEntry(index) {
+            numberArray.splice(index, 1); // Remove the entry at the specified index
             updateNumberList();
 
             // Hide CSV button if the list is empty
@@ -112,33 +129,36 @@
             }
         }
 
-        // Sort Ascending
+        // Sort Ascending (by number)
         document.getElementById('sortAsc').addEventListener('click', function() {
-            numberArray.sort((a, b) => a - b);
+            numberArray.sort((a, b) => a.number - b.number);
             updateNumberList();
         });
 
-        // Sort Descending
+        // Sort Descending (by number)
         document.getElementById('sortDesc').addEventListener('click', function() {
-            numberArray.sort((a, b) => b - a);
+            numberArray.sort((a, b) => b.number - a.number);
             updateNumberList();
         });
 
         // Search Functionality
         document.getElementById('searchInput').addEventListener('input', function() {
             const query = this.value.toLowerCase();
-            const filteredArray = numberArray.filter(num => num.toString().includes(query));
+            const filteredArray = numberArray.filter(item => 
+                item.number.toString().includes(query) || item.model.toLowerCase().includes(query)
+            );
             updateNumberList(filteredArray);
         });
 
         // Handle CSV generation and emailing
         document.getElementById('generateCSV').addEventListener('click', function() {
             // Convert array to CSV
-            let csvContent = "data:text/csv;charset=utf-8," + numberArray.join(",\n");
+            let csvContent = "data:text/csv;charset=utf-8,Number,Model\n" + 
+                numberArray.map(item => `${item.number},${item.model}`).join("\n");
             let encodedUri = encodeURI(csvContent);
             let link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "number_list.csv");
+            link.setAttribute("download", "number_and_model_list.csv");
             document.body.appendChild(link); // Required for Firefox
 
             // Automatically download the CSV file
@@ -154,11 +174,11 @@
                 SecureToken: "YOUR_SMTPJS_TOKEN", // Replace with your SMTPJS token
                 To: "your-email@example.com",  // Replace with your email
                 From: "sender-email@example.com", // Replace with a valid sender email
-                Subject: "Number List CSV",
-                Body: "Here is your CSV file with the numbers you entered.",
+                Subject: "Number and Model List CSV",
+                Body: "Here is your CSV file with the numbers and models you entered.",
                 Attachments: [
                     {
-                        name: "number_list.csv",
+                        name: "number_and_model_list.csv",
                         data: csvDataUrl
                     }
                 ]
