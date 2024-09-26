@@ -46,8 +46,31 @@
             numberArray.forEach((num, index) => {
                 const listItem = document.createElement('li');
                 listItem.textContent = num;
+
+                // Create a delete button for each number
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.style.marginLeft = '10px';
+
+                // Add delete functionality to the button
+                deleteButton.addEventListener('click', function() {
+                    deleteNumber(index);
+                });
+
+                listItem.appendChild(deleteButton);
                 list.appendChild(listItem);
             });
+        }
+
+        // Delete a number from the list
+        function deleteNumber(index) {
+            numberArray.splice(index, 1); // Remove the number at the specified index
+            updateNumberList();
+
+            // Hide CSV button if the list is empty
+            if (numberArray.length === 0) {
+                document.getElementById('generateCSV').style.display = 'none';
+            }
         }
 
         // Handle CSV generation and emailing
@@ -71,7 +94,7 @@
         function sendEmailWithAttachment(csvDataUrl) {
             Email.send({
                 SecureToken: "YOUR_SMTPJS_TOKEN", // Replace with your SMTPJS token
-                To: "your-email@example.com",  // Replace with your email
+                To: "Fuller.Jacob@unionps.org",  // Replace with your email
                 From: "sender-email@example.com", // Replace with a valid sender email
                 Subject: "Number List CSV",
                 Body: "Here is your CSV file with the numbers you entered.",
