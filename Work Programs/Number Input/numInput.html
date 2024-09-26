@@ -12,14 +12,14 @@
             position: fixed;
             top: 10px;
             right: 10px;
-            width: 100px;
+            width: 400px;
             height: auto;
         }
     </style>
 </head>
 <body>
     <!-- Image positioned in the top-right corner -->
-    <img src="your-image-url.jpg" alt="Top Right Image" class="top-right-image">
+    <img src="./unionlogo.png" alt="Top Right Image" class="top-right-image">
 
     <h1>Enter a number and select a model</h1>
 
@@ -51,6 +51,7 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script> <!-- For sending emails -->
     <script>
         let numberArray = [];
+        let lastSelectedModel = ''; // Keep track of the last selected model
 
         // Handle form submission
         document.getElementById('numberForm').addEventListener('submit', function(e) {
@@ -68,9 +69,14 @@
             numberArray.push({ number: Number(numberInput), model: modelSelect });
             updateNumberList();
 
-            // Clear input fields
+            // Store the last selected model
+            lastSelectedModel = modelSelect;
+
+            // Clear the number input field
             document.getElementById('numberInput').value = '';
-            document.getElementById('modelSelect').value = '';
+
+            // Set the dropdown to the last selected model
+            document.getElementById('modelSelect').value = lastSelectedModel;
 
             // Show CSV button once there is at least one entry
             if (numberArray.length > 0) {
