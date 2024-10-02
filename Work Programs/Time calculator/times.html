@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Day Hours Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="time"], input[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .result {
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Work Hours Calculator</h2>
+        <label for="start-time">Start Time:</label>
+        <input type="time" id="start-time">
+
+        <label for="end-time">End Time:</label>
+        <input type="time" id="end-time">
+
+        <input type="button" value="Calculate Hours" onclick="calculateHours()">
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateHours() {
+            // Get the start and end time values
+            var startTime = document.getElementById('start-time').value;
+            var endTime = document.getElementById('end-time').value;
+
+            if (startTime === '' || endTime === '') {
+                document.getElementById('result').innerText = "Please enter both times.";
+                return;
+            }
+
+            // Convert time to date objects
+            var start = new Date('1970-01-01T' + startTime + 'Z');
+            var end = new Date('1970-01-01T' + endTime + 'Z');
+
+            // Calculate the difference in milliseconds
+            var diff = end - start;
+
+            // If end time is earlier than start time, assume it's the next day
+            if (diff < 0) {
+                end.setDate(end.getDate() + 1); // Add one day to end time
+                diff = end - start;
+            }
+
+            // Convert the difference to hours and minutes
+            var hours = Math.floor(diff / (1000 * 60 * 60));
+            var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Display the result
+            document.getElementById('result').innerText = "Total hours worked: " + hours + " hours and " + minutes + " minutes.";
+        }
+    </script>
+
+</body>
+</html>
